@@ -1,0 +1,13 @@
+select
+count(job_id) as number_of_jobs,
+CASE
+when salary_rate >= '1500000' THEN 'higher'
+when salary_rate = '10000' THEN 'standard'
+else 'low salary'
+end as salary_range
+from 
+job_postings_fact
+WHERE
+job_title_short='Data Analyst'
+GROUP BY
+salary_range;
